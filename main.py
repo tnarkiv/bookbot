@@ -1,4 +1,4 @@
-""" for sys.argv variables """
+""" main module of bookbot project """
 
 import sys
 from stats import count_number_of_words
