@@ -1,4 +1,5 @@
 from stats import count_number_of_words
+import sys
 
 def count_characters(text):    
     text = text.lower()
@@ -11,16 +12,22 @@ def count_characters(text):
     return character_dictionary
 
 def main():
-    path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    path = sys.argv[1]
     text = None
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {path}...")
+    print("----------- Word Count ----------")
     with open(path) as f:
-        text = f.read()
-    print(f"--- Begin report of {path} ---")
+        text = f.read()    
     number_of_words = count_number_of_words(text)
-    print(f"{number_of_words} words found in the document\n")
+    print(f"Found {number_of_words} total words")
+    print("--------- Character Count -------")
     character_dictionary = count_characters(text)
     for key, value in character_dictionary.items():
         if(key >= 'a' and key <= 'z'):
-            print(f"The \'{key}\' was found {value} times")
+            print(f"{key}: {value}")
 
 main()
