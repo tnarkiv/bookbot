@@ -1,16 +1,14 @@
+from stats import count_number_of_words
+
 def count_characters(text):    
     text = text.lower()
     character_dictionary = {}
     for character in text:
-        if(character_dictionary.__contains__(character)):
+        if(character in character_dictionary):
             character_dictionary[character] += 1
         else:
             character_dictionary[character] = 1
     return character_dictionary
-
-def count_number_of_words(text):    
-    number_of_words = text.split().__len__()
-    return number_of_words
 
 def main():
     path = "books/frankenstein.txt"
